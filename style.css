@@ -1,0 +1,93 @@
+/* Pengaturan Dasar */
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f8ff;
+    margin: 0;
+}
+
+h1 {
+    color: #333;
+}
+
+.info-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 600px;
+    margin-bottom: 20px;
+}
+
+#restart-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+}
+
+/* Kontainer Papan Permainan */
+.game-container {
+    display: grid;
+    grid-template-columns: repeat(4, 100px); /* 4 kolom kartu */
+    gap: 10px;
+    perspective: 1000px; /* Diperlukan untuk efek 3D flip */
+}
+
+/* Gaya Kartu Individual */
+.card {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+/* Class 'flipped' akan ditambahkan oleh JS saat kartu diklik */
+.card.flipped {
+    transform: rotateY(180deg);
+}
+
+/* --- PERUBAHAN DI SINI --- */
+.card.matched {
+    cursor: default;
+}
+
+.card.matched .card-front {
+    background-color: transparent;
+    box-shadow: none;
+}
+/* --- AKHIR PERUBAHAN --- */
+
+
+/* Bagian Depan dan Belakang Kartu */
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Sembunyikan sisi belakang saat tidak terlihat */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card-back {
+    background-color: #2c3e50;
+    color: white;
+}
+
+.card-front {
+    background-color: #ecf0f1;
+    transform: rotateY(180deg); /* Balik sisi depan secara default */
+}
